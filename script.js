@@ -39,6 +39,19 @@ function updateLargeCup() {
     // furst see how many full cups there are
     const fullCups = document.querySelectorAll('.cup-small.full').length
     const totalCups = smallCups.length
+    if(fullCups === 0) {
+        percentage.style.visibility = 'hidden'
+        percentage.style.height = 0
+    } else {
+        percentage.style.visibility = 'visible'
+        /*
+        use the total height to take fullCups / by totalcups(100%) 
+        and multiply by 330px */
+        percentage.style.height = `${fullCups/ totalCups * 330}px`
+    }
+
+    // update percentage
+    percentage.innerText = `${fullCups/ totalCups * 100}%`
     console.log(totalCups)
     console.log(fullCups)
 }
