@@ -3,6 +3,7 @@
 
 :root {
   --border-color: #144fc6;
+  --fill-color: #6ab3f8;
 }
 * {
   box-sizing: border-box;
@@ -58,4 +59,34 @@ h3{
   text-align: center;
   margin: 5px;
   transition: 0.3s ease;
+}
+
+.cup.cup.cup-small.full {
+  background-color: var(--fill-color);
+}
+.cups {
+  display: flex;
+  flex-wrap: wrap;
+  width: 280px;
+  align-items: center;
+  justify-content: center;
+}
+
+.remaining {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  flex: 1;
+  transition: 0.3s ease;
+}
+
+.remaining span {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.remaining small {
+  font-size: 12px;
 }
