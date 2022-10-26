@@ -12,17 +12,14 @@ smallCups.forEach((cup, index) => {
 
 function highlightCups(index) {
     if (smallCups[index].classList.contains('full') &&
-        /*
-        if the next index doesn't contain full class toggle on and off by
-        decrementing current index by 1
+        /* if the next index doesn't contain full class toggle on and off by decrementing current index by 1
          */
         !smallCups[index].nextElementSibling.classList.contains('full')) {
         index--
     }
 
     /*
-    A for each loop to loop through all the cups and add the class to 
-    the appropriate cups.
+    A for each loop to loop through all the cups and add the class to the appropriate cups.
      */
     smallCups.forEach((cup, index2) => {
         if (index2 <= index) {
@@ -44,14 +41,26 @@ function updateLargeCup() {
         percentage.style.height = 0
     } else {
         percentage.style.visibility = 'visible'
-        /*
-        use the total height to take fullCups / by totalcups(100%) 
-        and multiply by 330px */
+        /* use the total height to take fullCups / by totalcups(100%) and multiply by 330px */
         percentage.style.height = `${fullCups/ totalCups * 330}px`
+        // update percentage
+        percentage.innerText = `${fullCups/ totalCups * 100}%`
     }
 
-    // update percentage
-    percentage.innerText = `${fullCups/ totalCups * 100}%`
-    console.log(totalCups)
-    console.log(fullCups)
+    // if no cups remain hide 'remaining'
+    if(fullCups === totalCups) {
+        remainder.style.visibility = 'hidden'
+        remainder.style.height = 0
+    } else {
+        remainder.style.visibility = 'visible'
+        // show remaining liters
+        liters.innerText = `${2 -(250 * fullCups / 1000)}`
+    }
 }
+    // console.log(totalCups)
+    // console.log(fullCups)
+
+    /* TODO LIST---------------------------------
+        1. Need to add some function to convert and select diff units of measurement.
+        2. use this logic to apply to different areas such as sodium, fat, carbs, calories etc.
+        3. style different measurments types of tracking */
